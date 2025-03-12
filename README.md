@@ -5,4 +5,5 @@ Functionalities:
 -viewing all notes
 -editing a note:
 -changing note title
--changing note content with rich text formatting(bold, italic, underline, color, fontsize)
+-changing note content with rich text formatting
+	(bold, italic, underline, color, fontsize)
