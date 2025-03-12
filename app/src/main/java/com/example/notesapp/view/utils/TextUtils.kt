@@ -1,4 +1,4 @@
-package com.example.notesapp.ui.utils
+package com.example.notesapp.view.utils
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString

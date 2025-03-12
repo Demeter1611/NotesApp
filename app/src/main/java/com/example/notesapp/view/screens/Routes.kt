@@ -1,4 +1,4 @@
-package com.example.notesapp.ui.screens
+package com.example.notesapp.view.screens
 
 object Routes {
     const val HOME_SCREEN = "HOME_SCREEN"

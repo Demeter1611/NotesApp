@@ -1,4 +1,4 @@
-package com.example.notesapp.ui
+package com.example.notesapp.view
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -37,8 +37,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.notesapp.ui.utils.convertStringToColor
-import com.example.notesapp.ui.utils.convertStringToTextStyle
+import com.example.notesapp.view.utils.ColorConverter
+import com.example.notesapp.view.utils.TextStyleConverter
 
 @Composable
 fun TextComponent(textValue: String,
@@ -113,7 +113,7 @@ fun RichTextBottomBar(
                 onExpandToggle = { isTextStyleExpanded = !isTextStyleExpanded },
                 contentList = listOf("Bold", "Italic", "Underline"),
                 buttonText = "Text style",
-                onItemClick = { style -> onTextStyleToggle(convertStringToTextStyle(style)) },
+                onItemClick = { style -> onTextStyleToggle(TextStyleConverter.convertStringToTextStyle(style)) },
                 modifierValue = equalSizeModifier
             )
 
@@ -122,7 +122,7 @@ fun RichTextBottomBar(
                 onExpandToggle = { isColorExpanded = !isColorExpanded},
                 contentList = listOf("Black", "Red", "Blue", "Green", "Yellow", "Magenta", "Cyan"),
                 buttonText = "Color",
-                onItemClick = { color -> onColorChange(convertStringToColor(color))},
+                onItemClick = { color -> onColorChange(ColorConverter.convertStringToColor(color))},
                 modifierValue = equalSizeModifier,
             )
 
@@ -145,7 +145,7 @@ fun RichTextBottomBarPreview(){
 }
 
 @Composable
-fun RichTextButton(
+fun ExpandableButton(
     onClick: () -> Unit,
     textValue: String,
     modifierValue: Modifier = Modifier,
@@ -154,7 +154,6 @@ fun RichTextButton(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
         modifier = Modifier
-            .border(0.5.dp, Color.Black)
             .then(modifierValue)
     ){
         TextComponent(
@@ -167,8 +166,8 @@ fun RichTextButton(
 
 @Preview(showBackground = true)
 @Composable
-fun RichTextButtonPreview() {
-    RichTextButton(
+fun ExpandableButtonPreview() {
+    ExpandableButton(
         onClick = {},
         textValue = "Button"
     )
@@ -208,7 +207,7 @@ fun <T> ExpandableMenu(
         modifier = modifierValue,
         contentAlignment = Alignment.BottomCenter
     ){
-        RichTextButton(
+        ExpandableButton(
             onClick = { onExpandToggle() },
             textValue = buttonText,
             modifierValue = Modifier.fillMaxWidth()
